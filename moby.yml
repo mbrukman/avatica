@@ -5,7 +5,7 @@ services:
       - "8765"
 
 dev:
-  image: golang:alpine
+  image: golang
   env:
     AVATICA_HOST: http://phoenix:8765
   steps:
