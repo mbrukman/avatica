@@ -1,6 +1,5 @@
 box:
   id: golang
-  cmd: /bin/sh
 
 no-response-timeout: 20
 
@@ -25,8 +24,6 @@ build:
     - script:
       name: go vendor
       code: |
-        apk update
-        apk add git
         go get -u github.com/kardianos/govendor
         govendor sync
 
