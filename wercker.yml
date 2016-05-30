@@ -40,7 +40,7 @@ build:
     - script:
         name: go test
         code: |
-          go test $(go list ./... | grep -v /vendor/)
+          go test -cover -v $(go list ./... | grep -v /vendor/)
 
     # Invoke goveralls
     - script:
