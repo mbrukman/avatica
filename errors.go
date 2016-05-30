@@ -1,6 +1,7 @@
 package avatica
 
 import (
+	"fmt"
 	"github.com/Boostport/avatica/message"
 	"regexp"
 	"strconv"
@@ -55,11 +56,12 @@ func (r ResponseError) Name() string {
 // errorResponseToReponseError converts an error protocol buffer response
 // to a native golang error.
 func errorResponseToResponseError(message *message.ErrorResponse) ResponseError {
-
+	fmt.Println(message.ErrorMessage)
 	re := regexp.MustCompile(`java.sql.SQLException: ERROR (\d+) \((\d+)\)`)
 	codes := re.FindStringSubmatch(message.ErrorMessage)
-
-	errorCode, _ := strconv.Atoi(codes[1])
+	fmt.Println(codes)
+	errorCode, e := strconv.Atoi(codes[1])
+	fmt.Println(e)
 	sqlState := codes[2]
 
 	err := ResponseError{
